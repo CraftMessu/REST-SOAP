@@ -1,0 +1,60 @@
+#%RAML 1.0
+
+title: custumerManagementAPI
+version: v1
+
+types: 
+  withId: !include frags/type1.raml
+  withNoId: !include frags/type2.raml
+
+/users:
+  get:
+    description: retrieve all users
+    responses: 
+      200:
+        body:
+          application/json:
+            type: withId []
+            example: !include examples/getAllUsers.raml
+  post:
+    description: create a user's information
+    body:
+      application/json:
+        type: withNoId
+        example: !include examples/postUser.raml
+    responses:
+      201:
+        body:
+          application/json:
+            example: |
+              {"message": "User successfuly created!"}
+
+  /{id}:
+    description: retrieve a user by id
+    get:
+      responses: 
+        200:
+          body:
+            application/json:
+              type: withId
+              example: !include examples/getPutDeleteById.raml
+    put:
+      description: update user's information by id
+      body:
+        application/json:
+          type: withId
+          example: !include examples/getPutDeleteById.raml
+      responses: 
+        200:
+          body:
+            application/json:
+              example: |
+                {"message": "User's information updated!"}
+
+    delete:
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {"message": "User successfully deleted!"}

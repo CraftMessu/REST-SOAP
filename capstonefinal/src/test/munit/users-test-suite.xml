@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="users-test-suite.xml" />
+	<munit:test name="users-test-suite-put:\users\(id):application\json:users-configTest" doc:id="80fae4e2-725f-4f6c-88ad-e933e1d25745" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="7ac56700-3925-4d0a-8a51-391b8826d715" >
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to put:\users\(id):application\json:users-config" doc:id="da0bb372-1d84-405d-a829-e8c7639e4500" name="put:\users\(id):application\json:users-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="7dd2d4e8-585a-49af-b9d8-6e39a2e8e4ba" is="#[MunitTools::notNullValue()]" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="users-test-suite-delete:\users\(id):users-configTest" doc:id="52b13948-1c72-44d3-94d5-0b8a9e18b7c7" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="8ebef927-eae5-46d8-82d5-27a813b98c49" />
+			<flow-ref doc:name="Flow-ref to delete:\users\(id):users-config" doc:id="2476c63f-7b7a-4a0d-a23f-11928bbc0942" name="delete:\users\(id):users-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="463d33be-bcde-420e-89bd-cef0a1d98ab6" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="users-test-suite-get:\users:users-configTest" doc:id="d75ff1e5-d8ac-4d79-8014-ac37bcbfdbbe" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="4849bccd-e320-49a7-ba6f-32653176fe95" />
+			<flow-ref doc:name="Flow-ref to get:\users:users-config" doc:id="3076b6b2-d819-41ba-87a1-7e1d4c417d4e" name="get:\users:users-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="cccd7e29-007b-4a55-9b7c-8366cffb4e98" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="users-test-suite-post:\users:application\json:users-configTest" doc:id="f66333cb-ef41-470b-bafc-0ed41c03876f" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="68afddec-a3ed-4f71-9347-8f9fe04413b4" />
+			<flow-ref doc:name="Flow-ref to post:\users:application\json:users-config" doc:id="619e9306-1a2a-404a-9933-da3fb649eaf0" name="post:\users:application\json:users-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="01978d05-e227-46f3-a4ea-0525c493ff43" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="users-test-suite-get:\users\(id):users-configTest" doc:id="d37e86e2-7dd0-4e4d-b094-b78a024205a6" description="Test">
+		<munit:execution >
+			<munit:set-event doc:name="Set Event" doc:id="c122e191-ffcb-4e1d-a469-d27959c54028" />
+			<flow-ref doc:name="Flow-ref to get:\users\(id):users-config" doc:id="c6198644-9ee0-4986-9f07-98768b6376e7" name="get:\users\(id):users-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="0a2f4fc8-d76f-46c2-a02c-74edef35788e" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
